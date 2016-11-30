@@ -64,6 +64,11 @@ class LineItemsController < ApplicationController
     end
   end
 
+  #never trust params from the internet, only allow white list through
+  def line_item_params
+    params.require(:line_item).permit(:product_id)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
