@@ -21,6 +21,10 @@ gem 'figaro'
 
 gem 'devise'
 
+gem 'cancancan'
+
+gem 'rolify'
+
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
