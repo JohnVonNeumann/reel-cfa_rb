@@ -1,47 +1,52 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Reel - Your Number One Fishing Destination Finder </title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
-  <ul class="nav">
-    <li class="active"><a href="/ideas">Ideas</a></li>
-  </ul>
-  <p class="navbar-text pull-right">
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-  <% end %>
   <body class='<%= controller.controller_name %>'>
     <div id="banner">
       <%= image_tag 'logo.svg', alt: 'Reel' %>
       <span class="title"><%= @page_title %> </span>
     </div>
-    <div id="columns">
-      <div id="side">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Info</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Reel", '#', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Help",   '#' %></li>
+            <li><%= link_to "Info",   '#' %></li>
+            <li><%= link_to "Contact",   '#' %></li>
+              <% if user_signed_in? %>
+                Logged in as <strong><%= current_user.email %></strong>.
+                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+              <% end %>
+          </ul>
+        </nav>
       </div>
-      <div id="main">
+    </header>
+    <div class="container">
         <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
         <% end %>
         <% if alert %>
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
   </body>
 </html>
