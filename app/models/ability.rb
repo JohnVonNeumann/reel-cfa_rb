@@ -28,5 +28,20 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
+    if user.has_role? :admin
+      can :manage, :all?
+    else
+      can :read, :all
+    end
+
+
+    # Use the resourcify method in all models you want to put a role on. For example, if we have the Forum model:
+    #
+    # class Forum < ActiveRecord::Base
+    #   resourcify
+    # end
+    #
   end
+
 end
