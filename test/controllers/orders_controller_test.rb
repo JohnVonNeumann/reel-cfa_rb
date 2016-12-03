@@ -57,5 +57,5 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     get new_order_url
     assert_response :success
   end
-  
+
 end

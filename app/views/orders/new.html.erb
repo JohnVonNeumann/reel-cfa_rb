@@ -1,5 +1,7 @@
-<h1>New Order</h1>
-
-<%= render 'form', order: @order %>
-
-<%= link_to 'Back', orders_path %>
+<!-- make suse of the _form partial we created earlier -->
+<div class="depot_form">
+  <fieldset>
+    <legend>Please enter your details: </legend>
+    <%= render 'form', order: @order %>
+  </fieldset>
+</div>
