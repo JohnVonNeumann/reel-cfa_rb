@@ -1,0 +1,38 @@
+
+
+
+
+  <body class='<%= controller.controller_name %>'>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <span class="title"><%= @page_title %> </span>
+      <%= link_to "Reel", '#', id: "logo" %>
+      <div class="container">
+        <nav>
+          <ul class="navbar-nav navbar-right">
+            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Help",   '#' %></li>
+            <li><%= link_to "Info",   '#' %></li>
+            <li><%= link_to "Contact",   '#' %></li>
+              <% if user_signed_in? %>
+                Logged in as <strong><%= current_user.email %></strong>.
+                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+              <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
